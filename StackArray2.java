@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class StackArray2 {
 
 	// create Array
@@ -6,7 +8,7 @@ public class StackArray2 {
 
 	// give the position from the array
 
-	int pointer = 0;
+	int pointer = 1;
 
 	// main method
 
@@ -120,6 +122,54 @@ public class StackArray2 {
 			System.out.println("__");
 
 		}
+	}
+
+	public static Boolean pruefeKlammern() {
+		Scanner sc = new Scanner(System.in);
+        // loop
+		while (sc.hasNext()) {
+			// String for the input
+			String eingabe = sc.next();
+
+			if (eingabe.equals("{")) {
+				return hilfsMethode(sc, "}");
+			}
+			if (eingabe.equals("(")) {
+				return hilfsMethode(sc, ")");
+			}
+			if (eingabe.equals("[")) {
+				return hilfsMethode(sc, "]");
+			}
+
+		}
+		return false;
+
+	}
+
+	
+	
+	public static Boolean hilfsMethode(Scanner sc, String n) {
+		String eingabe = sc.next();
+		if (eingabe.equals(n)) {
+			return true;
+			
+			// incorrect placement 
+		} else if (eingabe.equals("}") || eingabe.equals(")") || eingabe.equals("]")) {
+			return false;
+			
+			// helper for the correctness
+		}
+		if (eingabe.equals("{")) {
+			return hilfsMethode(sc, "}");
+		}
+		if (eingabe.equals("(")) {
+			return hilfsMethode(sc, ")");
+		}
+		if (eingabe.equals("[")) {
+			return hilfsMethode(sc, "]");
+		}
+		return hilfsMethode(sc, n);
+
 	}
 
 }
