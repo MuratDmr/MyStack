@@ -1,31 +1,22 @@
-public class StackArray1 {
+public class StackArray2 {
 
-	int array[] = new int[100];
-	int pointer = 1;
+	char array[] = new char[4];
+	int pointer =0;
 
 	public static void main(String[] args) {
 
-		StackArray1 myStack = new StackArray1();
-
-		myStack.push(10);
+		StackArray2 myStack = new StackArray2();
+		
+		myStack.push('a');
 		myStack.pop();
-		myStack.push(10);
-		myStack.push(15);
-		myStack.push(40);
-		myStack.push(70);
-		myStack.push(5);
-		myStack.push(22);
-		myStack.pop();
-		myStack.push(99);
-		myStack.push(101);
+		myStack.push('b');
 //		myStack.push(17);
 //		myStack.push(20);
-		
 		myStack.print();
 
 	}
 
-	public void push(int o) {
+	public void push(char o) {
 		if (isFull() == true) {
 			System.out.println("overflow");
 		}
@@ -38,11 +29,11 @@ public class StackArray1 {
 		if (isEmpty() == true) {
 			System.out.println("underflow");
 		}
-
+		
 		pointer--;
 		int tmp = array[pointer];
 		array[pointer] = 0;
-
+		
 		return tmp;
 	}
 
@@ -65,10 +56,10 @@ public class StackArray1 {
 		return flag;
 
 	}
-
-	public void print() {
+	
+	public void print(){
 		for (int i = 0; i < pointer; i++) {
-			System.out.print(array[i] + " ,");
+			   System.out.print(array[i]+" ");
 		}
 	}
 
