@@ -1,4 +1,4 @@
-ublic class StackArray2 {
+public class StackArray2 {
 	
 	// create Array
 
@@ -6,15 +6,17 @@ ublic class StackArray2 {
 	
 	//  give the position from the array
 	
-	int pointer =0;
+	int pointer = 0;
 	
 	//main method
 
 	public static void main(String[] args) {
 		
 		// create Object
-
+		
 		StackArray2 myStack = new StackArray2();
+		
+		// push and pop from myStack
 		
 		myStack.push('a');
 		myStack.push('b');
@@ -24,9 +26,14 @@ ublic class StackArray2 {
 		myStack.push('f');
 		myStack.push('m');
 		myStack.pop();
+		myStack.push('t');
+		myStack.pop();
 		
 //		myStack.push(17);
 //		myStack.push(20);
+		
+		// output from myStack
+		
 		myStack.print();
 
 	}
@@ -34,6 +41,9 @@ ublic class StackArray2 {
 	// check if myStack is full
 
 	public void push(char o) {
+		
+		// if myStack is full output overflow
+		
 		if (isFull() == true) {
 			System.out.println("overflow");
 		}
@@ -45,9 +55,14 @@ ublic class StackArray2 {
 	// check if myStack is empty
 	
 	public int pop() {
+		
+		// if myStack is empty output overflow
+		
 		if (isEmpty() == true) {
 			System.out.println("underflow");
 		}
+		
+		//  pointer = 0 output underflow
 		
 		pointer--;
 		int tmp = array[pointer];
@@ -61,6 +76,9 @@ ublic class StackArray2 {
 
 	public boolean isFull() {
 		boolean flag = false;
+		
+		// flag for myStack is full
+		
 		if (pointer == array.length) {
 			flag = true;
 			return flag;
@@ -74,6 +92,8 @@ ublic class StackArray2 {
 
 	public boolean isEmpty() {
 		boolean flag = false;
+		
+		// flag for myStack is empty
 		if (pointer == 0) {
 			flag = true;
 			return flag;
@@ -82,7 +102,7 @@ ublic class StackArray2 {
 
 	}
 	
-	// output
+	// output myStack
 	
 	public void print(){
 		for (int i = 0; i < pointer; i++) {
