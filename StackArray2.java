@@ -1,23 +1,23 @@
 public class StackArray2 {
-	
+
 	// create Array
 
 	char array[] = new char[20];
-	
-	//  give the position from the array
-	
+
+	// give the position from the array
+
 	int pointer = 0;
-	
-	//main method
+
+	// main method
 
 	public static void main(String[] args) {
-		
+
 		// create Object
-		
+
 		StackArray2 myStack = new StackArray2();
-		
+
 		// push and pop from myStack
-		
+
 		myStack.push('a');
 		myStack.push('b');
 		myStack.push('c');
@@ -28,57 +28,64 @@ public class StackArray2 {
 		myStack.pop();
 		myStack.push('t');
 		myStack.pop();
-		
+
 //		myStack.push(17);
 //		myStack.push(20);
-		
+
 		// output from myStack
-		
+
 		myStack.print();
 
 	}
-	
-	// check if myStack is full
+
+	// myStack.push
 
 	public void push(char o) {
-		
+
 		// if myStack is full output overflow
-		
+
 		if (isFull() == true) {
 			System.out.println("overflow");
 		}
 
 		array[pointer] = o;
+
+		// sit on
 		pointer++;
 	}
 
-	// check if myStack is empty
-	
+	// MyStack pop
 	public int pop() {
-		
-		// if myStack is empty output overflow
-		
+
+		// if myStack is empty output underflow
+
 		if (isEmpty() == true) {
 			System.out.println("underflow");
 		}
-		
-		//  pointer = 0 output underflow
-		
+
+		// take away
 		pointer--;
-		int tmp = array[pointer];
+
+		// new Integer
+		int zero = array[pointer];
+
+		// if pointer 0 myStack is empty
 		array[pointer] = 0;
-		
-		return tmp;
+
+		return zero;
 	}
-	
+
 	// controls the status (isFull)
-	// if pointer longer
+	// Checker for if the array is filled
 
 	public boolean isFull() {
+
+		// if flag true then the output is eight times "overflow" before the stack
+		// starts
+		// query whether true or false
 		boolean flag = false;
-		
-		// flag for myStack is full
-		
+
+		// if myStack is full so output "overflow"
 		if (pointer == array.length) {
 			flag = true;
 			return flag;
@@ -86,14 +93,16 @@ public class StackArray2 {
 		return flag;
 
 	}
-	
+
 	// controls the status (isEmpty)
 	// if pointer 0
-
 	public boolean isEmpty() {
+
+		// if flag true then the output is two times "underflow" before the stack starts
+		// query whether true or false
 		boolean flag = false;
-		
-		// flag for myStack is empty
+
+		// if myStack is empty so output "underflow"
 		if (pointer == 0) {
 			flag = true;
 			return flag;
@@ -101,15 +110,15 @@ public class StackArray2 {
 		return flag;
 
 	}
-	
-	// output myStack
-	
-	public void print(){
+
+	// output function
+
+	public void print() {
 		for (int i = 0; i < pointer; i++) {
-			   System.out.print(array[i]);
-			   System.out.println("");
-			   System.out.println("__");
-			   
+			System.out.print(array[i]);
+			System.out.println("");
+			System.out.println("__");
+
 		}
 	}
 
