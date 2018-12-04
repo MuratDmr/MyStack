@@ -1,25 +1,15 @@
-import java.util.Scanner;
-
-public class StackArray2 {
-
+public class StackArray1  {
 	// create Array
-
-	char array[] = new char[20];
-
-	// give the position from the array
-
-	int pointer = 1;
-
-	// main method
-
+	int size = 20; 
+	char array[] = new char[size];
+	//  give the position from the array
+	int pointer =0;
+	//main method
 	public static void main(String[] args) {
-
+	
 		// create Object
-
-		StackArray2 myStack = new StackArray2();
-
-		// push and pop from myStack
-
+		StackArray1 myStack = new StackArray1();
+		// push and pop of char's
 		myStack.push('a');
 		myStack.push('b');
 		myStack.push('c');
@@ -28,148 +18,50 @@ public class StackArray2 {
 		myStack.push('f');
 		myStack.push('m');
 		myStack.pop();
-		myStack.push('t');
-		myStack.pop();
-
-//		myStack.push(17);
-//		myStack.push(20);
-
-		// output from myStack
-
+//		myStack.push('x');
+//		myStack.push('y');
+//		myStack.push('z');
 		myStack.print();
-
-	}
-
-	// myStack.push
-
-	public void push(char o) {
-
-		// if myStack is full output overflow
-
-		if (isFull() == true) {
-			System.out.println("overflow");
+		
+	}	
+		
+	//define the push function
+	//
+	public void push(char X) {
+		if (pointer >= this.size) {
+			resize(pointer+20);
 		}
-
-		array[pointer] = o;
-
-		// sit on
+		array[pointer] = X;
 		pointer++;
-	}
-
-	// MyStack pop
+		
+	}	
+	//define the pop function
 	public int pop() {
-
-		// if myStack is empty output underflow
-
-		if (isEmpty() == true) {
-			System.out.println("underflow");
-		}
-
-		// take away
 		pointer--;
-
-		// new Integer
-		int zero = array[pointer];
-
-		// if pointer 0 myStack is empty
+		//transfer the point to pop to var tmp
+		int tmp = array[pointer];
+		//the point have to be 0 after the pop out
 		array[pointer] = 0;
-
-		return zero;
-	}
-
-	// controls the status (isFull)
-	// Checker for if the array is filled
-
-	public boolean isFull() {
-
-		// if flag true then the output is eight times "overflow" before the stack
-		// starts
-		// query whether true or false
-		boolean flag = false;
-
-		// if myStack is full so output "overflow"
-		if (pointer == array.length) {
-			flag = true;
-			return flag;
-		}
-		return flag;
-
-	}
-
-	// controls the status (isEmpty)
-	// if pointer 0
-	public boolean isEmpty() {
-
-		// if flag true then the output is two times "underflow" before the stack starts
-		// query whether true or false
-		boolean flag = false;
-
-		// if myStack is empty so output "underflow"
-		if (pointer == 0) {
-			flag = true;
-			return flag;
-		}
-		return flag;
-
-	}
-
-	// output function
-
-	public void print() {
+		//gives the number back which we want to pop
+		return tmp;	
+	}	
+	//prints the elements of the stack out
+	public void print(){
 		for (int i = 0; i < pointer; i++) {
-			System.out.print(array[i]);
-			System.out.println("");
-			System.out.println("__");
-
+			   System.out.print(array[i]);
+			   System.out.println();
 		}
 	}
-
-	public static Boolean pruefeKlammern() {
-		Scanner sc = new Scanner(System.in);
-        // loop
-		while (sc.hasNext()) {
-			// String for the input
-			String eingabe = sc.next();
-
-			if (eingabe.equals("{")) {
-				return hilfsMethode(sc, "}");
-			}
-			if (eingabe.equals("(")) {
-				return hilfsMethode(sc, ")");
-			}
-			if (eingabe.equals("[")) {
-				return hilfsMethode(sc, "]");
-			}
-
+	
+	void resize(int newSize) {
+		char array2[] = new char [newSize];
+		for (int t=0; t< size; t++) {
+			array2[t] = array[t] ; 
 		}
-		return false;
-
+		
+		array = array2 ;
+		size = newSize; 
 	}
-
 	
 	
-	public static Boolean hilfsMethode(Scanner sc, String n) {
-		String eingabe = sc.next();
-		if (eingabe.equals(n)) {
-			return true;
-			
-			// incorrect placement 
-		} else if (eingabe.equals("}") || eingabe.equals(")") || eingabe.equals("]")) {
-			return false;
-			
-			// helper for the correctness
-		}
-		if (eingabe.equals("{")) {
-			return hilfsMethode(sc, "}");
-		}
-		if (eingabe.equals("(")) {
-			return hilfsMethode(sc, ")");
-		}
-		if (eingabe.equals("[")) {
-			return hilfsMethode(sc, "]");
-		}
-		return hilfsMethode(sc, n);
-
-	}
-
 }
