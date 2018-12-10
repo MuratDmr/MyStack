@@ -1,63 +1,68 @@
 import java.util.Scanner;
 
-public class StackArray2{
+public class StackArray2 {
 
-	public static void main(String[] args) 
-	{
-		
-		System.out.println("Bitte gib deinen Klammerausdruck ein, den du prüfen möchtest: ");
-		//Scanner
+	public static void main(String[] args) {
+
+		// Text output
+		System.out.println("Bitte gib deinen Klammerausdruck ein, den sie überprüfen möchten:");
+
+		// Scanner
 		Scanner sc = new Scanner(System.in);
-		
-		String Input = sc.nextLine();	
-		System.out.println("Der Ausdruck ist " + (pruefCorrectness(Input) ? "richtig." : "falsch."));//boolean true/false	
-		System.out.println("Exit.");
+
+		// Input of the user
+		String Input = sc.nextLine();
+
+		// boolean true/false
+		System.out.println("Dieser Ausdruck ist " + (pruefCorrectness(Input) ? "richtig." : "falsch."));
+		System.out.println(" ");
+		System.out.println("Überprüfung ist Beendet.");
 	}
 
-	//This method checks the expression for the correctness of the bracket
-	public static boolean pruefCorrectness(String Input) 
-	{
+	// This method checks the expression for the correctness of the bracket
+	// Diese Methode überprüft den Ausdruck auf die Richtigkeit der Klammer
+	public static boolean pruefCorrectness(String Input) {
 		StackArray2 storage = new StackArray2();
-		for (int i = 0; i < Input.length(); i++) 
-		{
-			//variable place gets the input of the user
+		for (int i = 0; i < Input.length(); i++) {
+
+			// variable place gets the input of the user
+			// Variable ''place'' bekommt die Eingabe des Benutzers
 			char place = Input.charAt(i);
-			//if input = opened bracket -> push bracket on the stack
-			if (place == '(' || place == '{' || place == '[') 
-			{	
+
+			// if input = opened bracket -> push bracket on the stack
+			// wenn Eingabe = geöffnete Klammer -> Klammer auf den Stapel schieben
+			if (place == '(' || place == '{' || place == '[') {
 				storage.push(Input.charAt(i));
-			} 
-			//if input != closed bracket -> pop storage
-			else if ((place == ')') || (place == '}') || (place== ']')) 
-			{		
+			}
+			// if input != closed bracket -> pop storage
+			else if ((place == ')') || (place == '}') || (place == ']')) {
 				char bracket = storage.pop();
-				//check if the brackets are from the same kind
-				if (!((bracket == '(' && place == ')') || 
-					  (bracket == '{' && place == '}') || 
-					  (bracket== '[' && place == ']'))
-				   ) 
-				{
+
+				// check if the brackets are from the same kind
+				// Prüfen Sie, ob die Klammern von derselben Art sind
+				if (!((bracket == '(' && place == ')') || (bracket == '{' && place == '}')
+						|| (bracket == '[' && place == ']'))) {
 					System.out.println("Falsches Zeichen an Stelle:  " + i);
 					return false;
 				}
 			}
 		}
-		//check if the stack is not empty
-		if (storage.pop() != '\u0000') 
-		{
-			System.out.println("Falsches Zeichen an Stelle:  "+Input.length());
+		// check if the stack is not empty
+        // Prüfen Sie, ob der Stapel nicht leer ist
+		if (storage.pop() != '\u0000') {
+			System.out.println("Falsches Zeichen an Stelle:  " + Input.length());
 			return false;
 		}
 		return true;
 	}
 
-	public char pop() {
-		// TODO Auto-generated method stub
+	private char pop() {
+
 		return 0;
 	}
 
-	private void push(char charAt) {
-		// TODO Auto-generated method stub
-		
+	void push(char charAt) {
+
 	}
+
 }
