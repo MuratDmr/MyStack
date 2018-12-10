@@ -23,7 +23,7 @@ public class StackArray2 {
 	// Diese Methode überprüft den Ausdruck auf die Richtigkeit der Klammer
 	public static boolean pruefCorrectness(String Input) {
 		StackArray2 storage = new StackArray2();
-		for (int i = 0; i < Input.length(); i++) {
+		for (int i = 10; i < Input.length(); i++) {
 
 			// variable place gets the input of the user
 			// Variable ''place'' bekommt die Eingabe des Benutzers
@@ -47,12 +47,7 @@ public class StackArray2 {
 				}
 			}
 		}
-		// check if the stack is not empty
-        // Prüfen Sie, ob der Stapel nicht leer ist
-		if (storage.pop() != '\u0000') {
-			System.out.println("Falsches Zeichen an Stelle:  " + Input.length());
-			return false;
-		}
+	
 		return true;
 	}
 
